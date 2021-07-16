@@ -11,6 +11,10 @@ Document
 Use a better box model (opinionated).
 */
 
+table{
+  border:3px solid rgb(49, 49, 49);
+}
+
 *,
 ::before,
 ::after {

@@ -5,13 +5,14 @@
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+            パスワードをお忘れの際は、ご登録頂いているメールアドレスを下記のフォームにご記入ください。
+            新しいパスワードをお送りします。
         </div>
 
         @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
+        <div class="mb-4 font-medium text-sm text-green-600">
+            {{ session('status') }}
+        </div>
         @endif
 
         <x-jet-validation-errors class="mb-4" />
@@ -20,14 +21,18 @@
             @csrf
 
             <div class="block">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
+                <x-jet-label for="email" value="メールアドレス" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-jet-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-jet-button>
+            <div class="mt-10">
+                <div class="text-center">
+                    <input type="submit" value="パスワードを再発行する" class="rounded-lg bg-green-300 text-white px-6 py-2 cursor-pointer">
+
+                    <a class="block mt-5 underline text-sm text-gray-600 hover:text-gray-900" href="login">
+                ログイン画面に戻る
+            </a>
+                </div>
             </div>
         </form>
     </x-jet-authentication-card>

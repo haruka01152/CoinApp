@@ -12,8 +12,8 @@
 
 <body>
     <header class="bg-green-300 shadow-md">
-        <div class="w-3/4 py-1 m-auto">
-            <h1 class="text-white text-3xl text-bold">V-ledger</h1>
+        <div class="lg:container py-1 m-auto">
+            <h1 class="pl-5 md:pl-0 text-white text-3xl text-bold">V-ledger</h1>
         </div>
     </header>
     @yield('content')

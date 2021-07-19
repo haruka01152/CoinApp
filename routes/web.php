@@ -16,4 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::get('/', 'IndexController@index')->name('index');
+
+    Route::get('add', 'IndexController@add')->name('add');
+    Route::post('add', 'IndexController@create');
 });

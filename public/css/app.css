@@ -9,6 +9,11 @@ Document
 Use a better box model (opinionated).
 */
 
+.error{
+	color:red;
+	padding-top:1rem;
+}
+
 *,
 ::before,
 ::after {

@@ -13,7 +13,7 @@
 <body>
     <header class="bg-green-300 shadow-md">
         <div class="lg:container py-1 m-auto">
-            <h1 class="pl-5 md:pl-0 text-white text-3xl text-bold">V-ledger</h1>
+            <a href="{{route('index')}}" class="pl-5 md:pl-0 text-white text-3xl text-bold"><i class="fab fa-viacoin text-white"></i>-ledger</a>
         </div>
     </header>
     @yield('content')

@@ -26,26 +26,31 @@
 @if(count($coins) > 0)
 <table class="table-fixed m-auto w-11/12">
   <tbody class="text-center">
+    <tr class="bg-gray-300">
+      <th class="py-2 border border-black w-little">Icon</th>
+      <th class="py-2 border border-black">Name</th>
+      <th class="py-2 border border-black">Number</th>
+    </tr>
     @foreach($coins as $key => $coin)
     @if($key % 2)
     <tr>
       @if($coin->icon != null)
-      <td class="bg-gray-100 border w-little"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}"><img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px"></a></td>
+      <td class="bg-gray-100 border border-black w-little"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}"><img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px"></a></td>
       @else
-      <td class="bg-gray-100 border w-little"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
+      <td class="bg-gray-100 border border-black w-little"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
       @endif
-      <td class="bg-gray-100 border"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->name}}</a></td>
-      <td class="bg-gray-100 border"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->number}}</a></td>
+      <td class="bg-gray-100 border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->name}}</a></td>
+      <td class="bg-gray-100 border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->number}}</a></td>
     </tr>
     @else
     <tr>
       @if($coin->icon != null)
-      <td class="border w-little"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}"><img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px"></a></td>
+      <td class="border border-black w-little"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}"><img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px"></a></td>
       @else
-      <td class="border w-little"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
+      <td class="border border-black w-little"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
       @endif
-      <td class="border"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->name}}</a></td>
-      <td class="border"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->number}}</a></td>
+      <td class="border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->name}}</a></td>
+      <td class="border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->number}}</a></td>
     </tr>
     @endif
     @endforeach

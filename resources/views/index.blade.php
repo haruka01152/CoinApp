@@ -56,6 +56,10 @@
     @endforeach
   </tbody>
 </table>
+
+<div class="py-10">
+  {{$coins->links()}}
+</div>
 @else
 <div class="py-10 text-center">
   <p>データがありません。</p>

@@ -11,7 +11,7 @@ class IndexController extends Controller
     //
     public function index()
     {
-        $coins = Coin::all();
+        $coins = Coin::paginate(3);
         return view('index', compact('coins'));
     }
 

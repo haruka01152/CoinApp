@@ -1222,6 +1222,9 @@ select {
 .w-5 {
 	width: 1.25rem;
 }
+.w-little{
+	width:15%;
+}
 .w-16 {
 	width: 4rem;
 }

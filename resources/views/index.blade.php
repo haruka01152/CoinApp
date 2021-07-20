@@ -4,8 +4,23 @@
 
 @section('content')
 
+<style>
+  td {
+    padding: 0;
+    height: 0;
+  }
+
+  .td-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: .5rem 1rem;
+  }
+</style>
+
 <div class="py-8 pl-5">
-<a href="{{route('add')}}"><i class="fas fa-plus-circle text-green-300 fa-3x"></i></a>
+  <a href="{{route('add')}}"><i class="fas fa-plus-circle text-green-300 fa-3x"></i></a>
 </div>
 
 @if(count($coins) > 0)
@@ -15,22 +30,22 @@
     @if($key % 2)
     <tr>
       @if($coin->icon != null)
-      <td class="bg-gray-100 border w-2/4 px-4 py-2"><img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px"></td>
+      <td class="bg-gray-100 border w-little"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}"><img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px"></a></td>
       @else
-      <td class="bg-gray-100 border w-2/4 px-4 py-2"><i class="fab fa-viacoin text-green-300 fa-2x"></i></td>
+      <td class="bg-gray-100 border w-little"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
       @endif
-      <td class="bg-gray-100 border w-3/4 px-4 py-2">{{$coin->name}}</td>
-      <td class="bg-gray-100 border w-2/4 px-4 py-2">{{$coin->number}}</td>
+      <td class="bg-gray-100 border"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->name}}</a></td>
+      <td class="bg-gray-100 border"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->number}}</a></td>
     </tr>
     @else
     <tr>
       @if($coin->icon != null)
-      <td class="border w-2/4 px-4 py-2"><img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px"></td>
+      <td class="border w-little"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}"><img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px"></a></td>
       @else
-      <td class="border w-2/4 px-4 py-2"><i class="fab fa-viacoin text-green-300 fa-2x"></i></td>
+      <td class="border w-little"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
       @endif
-      <td class="border w-3/4 px-4 py-2">{{$coin->name}}</td>
-      <td class="border w-2/4 px-4 py-2">{{$coin->number}}</td>
+      <td class="border"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->name}}</a></td>
+      <td class="border"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->number}}</a></td>
     </tr>
     @endif
     @endforeach
@@ -38,7 +53,7 @@
 </table>
 @else
 <div class="py-10 text-center">
-<p>データがありません。</p>
+  <p>データがありません。</p>
 </div>
 @endif
 

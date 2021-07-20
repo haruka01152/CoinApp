@@ -9,18 +9,30 @@
 </div>
 
 @if(count($coins) > 0)
-<table class="table-fixed m-auto w-3/4">
+<table class="table-fixed m-auto w-11/12">
   <tbody class="text-center">
-    @foreach($coins as $coin)
+    @foreach($coins as $key => $coin)
+    @if($key % 2)
     <tr>
       @if($coin->icon != null)
-      <td class="border w-2/4 px-4 py-2"><img src="" alt=""></td>
+      <td class="bg-gray-100 border w-2/4 px-4 py-2"><img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px"></td>
       @else
-      <td class="border w-2/4 px-4 py-2"><i class="fas fa-viacoin text-green-300"></i></td>
+      <td class="bg-gray-100 border w-2/4 px-4 py-2"><i class="fab fa-viacoin text-green-300 fa-2x"></i></td>
+      @endif
+      <td class="bg-gray-100 border w-3/4 px-4 py-2">{{$coin->name}}</td>
+      <td class="bg-gray-100 border w-2/4 px-4 py-2">{{$coin->number}}</td>
+    </tr>
+    @else
+    <tr>
+      @if($coin->icon != null)
+      <td class="border w-2/4 px-4 py-2"><img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px"></td>
+      @else
+      <td class="border w-2/4 px-4 py-2"><i class="fab fa-viacoin text-green-300 fa-2x"></i></td>
       @endif
       <td class="border w-3/4 px-4 py-2">{{$coin->name}}</td>
       <td class="border w-2/4 px-4 py-2">{{$coin->number}}</td>
     </tr>
+    @endif
     @endforeach
   </tbody>
 </table>

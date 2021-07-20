@@ -22,19 +22,17 @@ class IndexController extends Controller
     public function create(Request $request)
     {
         $rules = [
-            'icon' => 'image|max:1024',
+            'icon' => 'image|max:1024|nullable',
             'name' => 'required|min:1|max:10|unique:coins,name',
-            'number' => 'required|min:1',
+            'number' => 'required|numeric|min:1',
         ];
         $this->validate($request, $rules);
 
-        if ($request->hasFile('icon') && $request->icon->isValid()) {
-            $file = time() . $request->icon->getClientOriginalName();
-            $target_path = public_path('images/');
-            $file->move($target_path, $file);
+        if ($request->icon != null) {
+            $image_path = $request->file('icon')->store('public/images/');
 
             Coin::create([
-                'icon' => $file,
+                'icon' => basename($image_path),
                 'name' => $request->name,
                 'number' => $request->number,
             ]);

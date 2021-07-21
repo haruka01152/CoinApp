@@ -7,13 +7,15 @@
 <form action="" method="post" class="py-10 w-3/4 m-auto" enctype="multipart/form-data">
 @csrf
     <div class="flex flex-col">
-        <label for="icon" class="text-lg text-gray-600 pb-3">【アイコン】※すでに登録されている場合は上書きされます</label>
+        <label for="icon" class="text-lg text-gray-600 pb-3">【アイコン】<br><span class="text-sm">※すでに登録されている場合は上書きされます</span></label>
 
         @if($coin->icon != null)
-        <img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:60px">
+        <div class="py-5">
+        <img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:60px; width:60px; margin:0 auto;">
+        </div>
         @endif
-        
-        <input type="file" name="icon" class="border border-black">
+
+        <input type="file" name="icon" class="border">
     </div>
     <div class="flex flex-col mt-8">
         <label for="name" class="text-lg text-gray-600 pb-3">【名前】</label>

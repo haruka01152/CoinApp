@@ -8,7 +8,7 @@
 @csrf
     <div class="flex flex-col">
         <label for="icon" class="text-lg text-gray-600 pb-3">【アイコン】</label>
-        <input type="file" name="icon" class="border border-black">
+        <input type="file" name="icon" class="border">
     </div>
     <div class="flex flex-col mt-8">
         <label for="name" class="text-lg text-gray-600 pb-3">【名前】</label>

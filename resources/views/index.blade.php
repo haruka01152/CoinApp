@@ -17,6 +17,11 @@
     height: 100%;
     padding: .5rem 1rem;
   }
+
+  .logo{
+    padding: .5rem .3rem;
+  }
+
 </style>
 
 <div class="py-8 pl-5">
@@ -35,9 +40,9 @@
     @if($key % 2)
     <tr>
       @if($coin->icon != null)
-      <td class="bg-gray-100 border border-black w-little"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}"><img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px"></a></td>
+      <td class="bg-gray-100 border border-black w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px;"></a></td>
       @else
-      <td class="bg-gray-100 border border-black w-little"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
+      <td class="bg-gray-100 border border-black w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
       @endif
       <td class="bg-gray-100 border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->name}}</a></td>
       <td class="bg-gray-100 border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->number}}</a></td>
@@ -45,9 +50,9 @@
     @else
     <tr>
       @if($coin->icon != null)
-      <td class="border border-black w-little"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}"><img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px"></a></td>
+      <td class="border border-black w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px"></a></td>
       @else
-      <td class="border border-black w-little"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
+      <td class="border border-black w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
       @endif
       <td class="border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->name}}</a></td>
       <td class="border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->number}}</a></td>
@@ -58,7 +63,7 @@
 </table>
 
 <div class="py-10">
-  {{$coins->links()}}
+  {{$coins->links('pagination::default')}}
 </div>
 @else
 <div class="py-10 text-center">

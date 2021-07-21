@@ -30,10 +30,11 @@ class IndexController extends Controller
         $this->validate($request, $rules);
 
         if ($request->icon != null) {
-            $image_path = $request->file('icon')->store('public/images/');
+            $file_name = $request->file('icon')->getClientOriginalName();
+            $image_path = $request->file('icon')->storeAs('public/images', time().$file_name);
 
             Coin::create([
-                'icon' => time() . basename($image_path),
+                'icon' => basename($image_path),
                 'name' => $request->name,
                 'number' => $request->number,
             ]);
@@ -64,12 +65,17 @@ class IndexController extends Controller
         $this->validate($request, $rules);
 
         if ($request->icon != null) {
-            $delIcon = Coin::findOrFail($request->id)->get('icon');
-            Storage::delete('public/images/' . $delIcon);
-            $image_path = $request->file('icon')->store('public/images/');
+            // 前の画像をファイルから削除
+            $del = Coin::findOrFail($request->id);
+            Storage::delete('public/images/' . $del->icon);
 
+            // 新しくアップされた画像をファイルに保存
+            $file_name = $request->file('icon')->getClientOriginalName();
+            $image_path = $request->file('icon')->storeAs('public/images', time().$file_name);
+
+            // DB更新
             Coin::where('id', $request->id)->update([
-                'icon' => time() . basename($image_path),
+                'icon' => basename($image_path),
                 'name' => $request->name,
                 'number' => $request->number,
             ]);

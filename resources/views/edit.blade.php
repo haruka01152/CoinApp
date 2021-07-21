@@ -8,6 +8,11 @@
 @csrf
     <div class="flex flex-col">
         <label for="icon" class="text-lg text-gray-600 pb-3">【アイコン】※すでに登録されている場合は上書きされます</label>
+
+        @if($coin->icon != null)
+        <img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:60px">
+        @endif
+        
         <input type="file" name="icon" class="border border-black">
     </div>
     <div class="flex flex-col mt-8">

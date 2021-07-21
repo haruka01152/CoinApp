@@ -22,4 +22,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
 
     Route::get('edit/{id}', 'IndexController@edit')->name('edit');
     Route::post('edit/{id}', 'IndexController@update');
+
+    Route::get('delete/{id}', 'IndexController@delete')->name('delete');
+    Route::post('delete/{id}', 'IndexController@destroy');
 });

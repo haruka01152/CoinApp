@@ -74,6 +74,9 @@
     <div class="lg:container m-auto">
     @yield('content')
     </div>
+
+    @stack('modals')
+    @livewireScripts
 </body>
 
 </html>

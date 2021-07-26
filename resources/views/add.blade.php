@@ -26,7 +26,7 @@
     <div class="text-center">
         <input type="submit" value="追加する" class="mt-10 rounded-lg bg-green-300 text-white px-6 py-2 cursor-pointer">
 
-        <a class="block mt-5 underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('index') }}">
+        <a class="block mt-8 underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('index') }}">
             << 一覧へ戻る
         </a>
     </div>

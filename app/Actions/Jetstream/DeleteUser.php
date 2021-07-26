@@ -3,6 +3,7 @@
 namespace App\Actions\Jetstream;
 
 use Laravel\Jetstream\Contracts\DeletesUsers;
+use App\Models\Coin;
 
 class DeleteUser implements DeletesUsers
 {
@@ -16,6 +17,7 @@ class DeleteUser implements DeletesUsers
     {
         $user->deleteProfilePhoto();
         $user->tokens->each->delete();
+        Coin::where('user_id', $user->id)->delete();
         $user->delete();
     }
 }

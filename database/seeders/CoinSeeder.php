@@ -18,86 +18,107 @@ class CoinSeeder extends Seeder
         DB::table('coins')->insert([
             [
                 'name' => 'COIN',
+                'user_id'  => 1,
+                'number' => 100,
+            ],
+            [
+                'name' => '2COIN',
+                'user_id'  => 2,
+                'number' => 100,
+            ],
+            [
+                'name' => '3COIN',
+                'user_id'  => 3,
                 'number' => 100,
             ],
             [
                 'name' => 'COIN',
+                'user_id'  => 1,
+                'number' => 100,
+            ],
+            [
+                'name' => '2COIN',
+                'user_id'  => 2,
+                'number' => 100,
+            ],
+            [
+                'name' => '3COIN',
+                'user_id'  => 3,
                 'number' => 100,
             ],
             [
                 'name' => 'COIN',
+                'user_id'  => 1,
+                'number' => 100,
+            ],
+            [
+                'name' => '2COIN',
+                'user_id'  => 2,
+                'number' => 100,
+            ],
+            [
+                'name' => '3COIN',
+                'user_id'  => 3,
                 'number' => 100,
             ],
             [
                 'name' => 'COIN',
+                'user_id'  => 1,
+                'number' => 100,
+            ],
+            [
+                'name' => '2COIN',
+                'user_id'  => 2,
+                'number' => 100,
+            ],
+            [
+                'name' => '3COIN',
+                'user_id'  => 3,
                 'number' => 100,
             ],
             [
                 'name' => 'COIN',
+                'user_id'  => 1,
+                'number' => 100,
+            ],
+            [
+                'name' => '2COIN',
+                'user_id'  => 2,
+                'number' => 100,
+            ],
+            [
+                'name' => '3COIN',
+                'user_id'  => 3,
                 'number' => 100,
             ],
             [
                 'name' => 'COIN',
+                'user_id'  => 1,
+                'number' => 100,
+            ],
+            [
+                'name' => '2COIN',
+                'user_id'  => 2,
+                'number' => 100,
+            ],
+            [
+                'name' => '3COIN',
+                'user_id'  => 3,
                 'number' => 100,
             ],
             [
                 'name' => 'COIN',
+                'user_id'  => 1,
                 'number' => 100,
             ],
             [
-                'name' => 'COIN',
+                'name' => '2COIN',
+                'user_id'  => 2,
                 'number' => 100,
             ],
             [
-                'name' => 'COIN',
-                'number' => 100,
-            ],
-            [
-                'name' => 'COIN',
-                'number' => 100,
-            ],
-            [
-                'name' => 'COIN',
-                'number' => 100,
-            ],
-            [
-                'name' => 'COIN',
-                'number' => 100,
-            ],
-            [
-                'name' => 'COIN',
-                'number' => 100,
-            ],
-            [
-                'name' => 'COIN',
-                'number' => 100,
-            ],
-            [
-                'name' => 'COIN',
-                'number' => 100,
-            ],
-            [
-                'name' => 'COIN',
-                'number' => 100,
-            ],
-            [
-                'name' => 'COIN',
-                'number' => 100,
-            ],
-            [
-                'name' => 'COIN',
-                'number' => 100,
-            ],
-            [
-                'name' => 'COIN',
-                'number' => 100,
-            ],
-            [
-                'name' => 'COIN',
-                'number' => 100,
-            ],
-            [
-                'name' => 'COIN',
+                'name' => '3COIN',
+                'user_id'  => 3,
                 'number' => 100,
             ],
         ]);

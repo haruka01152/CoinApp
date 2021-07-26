@@ -15,7 +15,7 @@ class IndexController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $coins = Coin::sortable()->paginate(10);
+        $coins = Coin::where('user_id', Auth::id())->sortable()->paginate(10);
         return view('index', compact('coins', 'user'));
     }
 
@@ -31,12 +31,14 @@ class IndexController extends Controller
             $image_path = FileStoreService::store($request);
 
             Coin::create([
+                'user_id' => Auth::id(),
                 'icon' => basename($image_path),
                 'name' => $request->name,
                 'number' => $request->number,
             ]);
         } else {
             Coin::create([
+                'user_id' => Auth::id(),
                 'name' => $request->name,
                 'number' => $request->number,
             ]);

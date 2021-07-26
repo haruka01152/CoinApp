@@ -14,6 +14,7 @@ class Coin extends Model
     public $sortable = ['updated_at', 'name'];
 
     protected $fillable = [
+        'user_id',
         'icon',
         'name',
         'number'

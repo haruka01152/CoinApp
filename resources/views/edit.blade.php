@@ -15,7 +15,7 @@
 
         @if($coin->icon != null)
         <div class="py-5">
-            <img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:60px; width:60px; margin:0 auto;">
+            <img src="{{secure_asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:60px; width:60px; margin:0 auto;">
         </div>
         @endif
 

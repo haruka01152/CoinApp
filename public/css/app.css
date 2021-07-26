@@ -1890,6 +1890,10 @@ background-color: rgba(253, 230, 138, var(--tw-bg-opacity));
 .duration-300 {
 	transition-duration: 300ms;
 }
+.error{
+	color:red;
+	padding: 1rem 0;
+}
 .ease-in-out {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }

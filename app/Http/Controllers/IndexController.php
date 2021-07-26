@@ -7,14 +7,16 @@ use App\Models\Coin;
 use App\Http\Requests\CreateRequest;
 use App\Http\Requests\UpdateRequest;
 use FileStoreService;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
     //
     public function index()
     {
-        $coins = Coin::paginate(10);
-        return view('index', compact('coins'));
+        $user = Auth::user();
+        $coins = Coin::sortable()->paginate(10);
+        return view('index', compact('coins', 'user'));
     }
 
     public function add()

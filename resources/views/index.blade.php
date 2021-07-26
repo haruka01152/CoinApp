@@ -5,6 +5,10 @@
 @section('content')
 
 <style>
+  * {
+    word-break: break-all;
+  }
+
   td {
     padding: 0;
     height: 0;
@@ -18,14 +22,18 @@
     padding: .5rem 1rem;
   }
 
-  .logo{
+  .logo {
     padding: .5rem .3rem;
   }
-
 </style>
 
-<div class="py-8 pl-5">
+<div class="py-8 pl-5 flex items-center justify-start">
   <a href="{{route('add')}}"><i class="fas fa-plus-circle text-green-300 fa-3x"></i></a>
+</div>
+
+<div class="flex pb-5">
+<div>@sortablelink('name', 'アルファベット順')</div>
+    <div>@sortablelink('updated_at', '更新順')</div>
 </div>
 
 @if(count($coins) > 0)
@@ -35,6 +43,7 @@
       <th class="py-2 border border-black w-little">Icon</th>
       <th class="py-2 border border-black">Name</th>
       <th class="py-2 border border-black">Number</th>
+      <th class="py-2 border border-black">Updated</th>
     </tr>
     @foreach($coins as $key => $coin)
     @if($key % 2)
@@ -46,6 +55,7 @@
       @endif
       <td class="bg-gray-100 border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->name}}</a></td>
       <td class="bg-gray-100 border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->number}}</a></td>
+      <td class="bg-gray-100 border border-black"><a class="td-link text-xs" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->updated_at}}</a></td>
     </tr>
     @else
     <tr>
@@ -56,6 +66,7 @@
       @endif
       <td class="border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->name}}</a></td>
       <td class="border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->number}}</a></td>
+      <td class="border border-black"><a class="td-link text-xs" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->updated_at}}</a></td>
     </tr>
     @endif
     @endforeach
@@ -63,7 +74,7 @@
 </table>
 
 <div class="py-10">
-  {{$coins->links('pagination::default')}}
+  {{$coins->appends(request()->query())->links('pagination::default')}}
 </div>
 @else
 <div class="py-10 text-center">

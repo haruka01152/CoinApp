@@ -7,7 +7,11 @@
 <form action="" method="post" class="py-10 w-3/4 m-auto" enctype="multipart/form-data">
     @csrf
     <div class="flex flex-col">
-        <label for="icon" class="text-lg text-gray-600 pb-3">【アイコン】<br><span class="text-sm">※すでに登録されている場合は上書きされます</span></label>
+        <label for="icon" class="text-lg text-gray-600 pb-3">【アイコン】
+            @if($coin->icon != null)
+            <br><span class="text-sm">※現在のアイコンに上書きされます</span>
+            @endif
+        </label>
 
         @if($coin->icon != null)
         <div class="py-5">
@@ -20,7 +24,7 @@
         @if($coin->icon != null)
         <div class="flex items-center pt-5">
             <input type="checkbox" name="deleteIcon" id="deleteIcon" value="true">
-            <label for="deleteIcon" class="pl-3">アイコンを削除する</label>
+            <label for="deleteIcon" class="pl-3">上書きせずアイコンの削除のみ行う</label>
         </div>
         @endif
     </div>

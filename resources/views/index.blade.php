@@ -49,7 +49,7 @@
     @if($key % 2)
     <tr>
       @if($coin->icon != null)
-      <td class="bg-gray-100 w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><img src="{{secure_asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px;"></a></td>
+      <td class="bg-gray-100 w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px;"></a></td>
       @else
       <td class="bg-gray-100 w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
       @endif
@@ -60,7 +60,7 @@
     @else
     <tr>
       @if($coin->icon != null)
-      <td class=" w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><img src="{{secure_asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px"></a></td>
+      <td class=" w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px"></a></td>
       @else
       <td class=" w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
       @endif

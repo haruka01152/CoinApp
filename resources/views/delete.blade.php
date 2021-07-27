@@ -12,7 +12,7 @@
         <label for="icon" class="text-lg text-gray-600 pb-3">【アイコン】</label>
 
         <div class="py-5">
-            <img src="{{secure_asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:60px; width:60px; margin:0 auto;">
+            <img src="{{asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:60px; width:60px; margin:0 auto;">
         </div>
     </div>
     @endif

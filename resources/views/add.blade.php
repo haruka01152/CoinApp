@@ -8,7 +8,7 @@
 @csrf
     <div class="flex flex-col">
         <label for="icon" class="text-lg text-gray-600 pb-3">【アイコン】</label>
-        <input type="file" name="icon" class="border">
+        <input type="file" name="icon">
     </div>
     <div class="flex flex-col mt-8">
         <label for="name" class="text-lg text-gray-600 pb-3">【名前】</label>
@@ -16,7 +16,7 @@
     </div>
     <div class="flex flex-col mt-8">
         <label for="number" class="text-lg text-gray-600 pb-3">【保有数】</label>
-        <input type="number" name="number" value="{{old('number')}}" step="0.001">
+        <input type="number" name="number" value="{{old('number')}}" step="0.00001">
     </div>
 
     @foreach($errors->all() as $error)

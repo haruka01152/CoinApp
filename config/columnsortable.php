@@ -23,7 +23,7 @@ return [
     /*
     whether icons should be enabled
      */
-    'enable_icons'                  => true,
+    'enable_icons'                  => 'fas fa-caret-down',
 
     /*
     defines icon set to use when sorted data is none above (alpha nor amount nor numeric)
@@ -33,12 +33,12 @@ return [
     /*
     icon that shows when generating sortable link while column is not sorted
      */
-    'sortable_icon'                 => null,
+    'sortable_icon'                 => 'fas fa-caret-down',
 
     /*
     generated icon is clickable non-clickable (default)
      */
-    'clickable_icon'                => false,
+    'clickable_icon'                => null,
 
     /*
     icon and text separator (any string)
@@ -59,7 +59,7 @@ return [
     /*
     default anchor class, if value is null none is added
      */
-    'anchor_class'                  => 'inline-block bg-yellow-200 rounded-lg ml-5 text-gray-700 w-32 h-8 text-center leading-8',
+    'anchor_class'                  => null,
 
     /*
     default active anchor class, if value is null none is added

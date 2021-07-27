@@ -19,7 +19,7 @@
         </div>
         @endif
 
-        <input type="file" name="icon" class="border">
+        <input type="file" name="icon">
 
         @if($coin->icon != null)
         <div class="flex items-center pt-5">
@@ -34,7 +34,7 @@
     </div>
     <div class="flex flex-col mt-8">
         <label for="number" class="text-lg text-gray-600 pb-3">【保有数】</label>
-        <input type="number" name="number" value="{{floatval($coin->number)}}" step="0.001">
+        <input type="number" name="number" value="{{floatval($coin->number)}}" step="0.00001">
     </div>
 
     @foreach($errors->all() as $error)

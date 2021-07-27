@@ -14,6 +14,11 @@
     height: 0;
   }
 
+  tr{
+    border-top: .5px solid gray;
+    border-bottom: .5px solid gray;
+  }
+
   .td-link {
     display: flex;
     justify-content: center;
@@ -31,42 +36,37 @@
   <a href="{{route('add')}}"><i class="fas fa-plus-circle text-green-300 fa-3x"></i></a>
 </div>
 
-<div class="flex pb-5">
-<div>@sortablelink('name', 'アルファベット順')</div>
-    <div>@sortablelink('updated_at', '更新順')</div>
-</div>
-
 @if(count($coins) > 0)
 <table class="table-fixed m-auto w-11/12">
   <tbody class="text-center">
-    <tr class="bg-gray-300">
-      <th class="py-2 border border-black w-little">Icon</th>
-      <th class="py-2 border border-black">Name</th>
-      <th class="py-2 border border-black">Number</th>
-      <th class="py-2 border border-black">Updated</th>
+    <tr>
+      <th class="py-2 w-little"></th>
+      <th class="py-2">@sortablelink('name', 'Name')</th>
+      <th class="py-2">@sortablelink('number', 'Number')</th>
+      <th class="py-2">@sortablelink('updated_at', 'Updated')</th>
     </tr>
     @foreach($coins as $key => $coin)
     @if($key % 2)
     <tr>
       @if($coin->icon != null)
-      <td class="bg-gray-100 border border-black w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><img src="{{secure_asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px;"></a></td>
+      <td class="bg-gray-100 w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><img src="{{secure_asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px;"></a></td>
       @else
-      <td class="bg-gray-100 border border-black w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
+      <td class="bg-gray-100 w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
       @endif
-      <td class="bg-gray-100 border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->name}}</a></td>
-      <td class="bg-gray-100 border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{floatval($coin->number)}}</a></td>
-      <td class="bg-gray-100 border border-black"><a class="td-link text-xs" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->updated_at}}</a></td>
+      <td class="bg-gray-100"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->name}}</a></td>
+      <td class="bg-gray-100"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{floatval($coin->number)}}</a></td>
+      <td class="bg-gray-100"><a class="td-link text-xs" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->updated_at}}</a></td>
     </tr>
     @else
     <tr>
       @if($coin->icon != null)
-      <td class="border border-black w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><img src="{{secure_asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px"></a></td>
+      <td class=" w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><img src="{{secure_asset('storage/images/' . $coin->icon)}}" alt="{{$coin->name}}ロゴ" style="height:30px"></a></td>
       @else
-      <td class="border border-black w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
+      <td class=" w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
       @endif
-      <td class="border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->name}}</a></td>
-      <td class="border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{floatval($coin->number)}}</a></td>
-      <td class="border border-black"><a class="td-link text-xs" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->updated_at}}</a></td>
+      <td ><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->name}}</a></td>
+      <td ><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{floatval($coin->number)}}</a></td>
+      <td ><a class="td-link text-xs" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->updated_at}}</a></td>
     </tr>
     @endif
     @endforeach

@@ -11,7 +11,7 @@ class Coin extends Model
     use HasFactory;
     use Sortable;
 
-    public $sortable = ['updated_at', 'name'];
+    public $sortable = ['updated_at', 'name', 'number'];
 
     protected $fillable = [
         'user_id',

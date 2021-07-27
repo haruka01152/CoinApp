@@ -18,7 +18,7 @@ class CreateCoinsTable extends Migration
             $table->integer('user_id');
             $table->string('icon')->nullable();
             $table->string('name');
-            $table->integer('number');
+            $table->decimal('number', $precision = 20, $scale = 3);
             $table->timestamps();
         });
     }

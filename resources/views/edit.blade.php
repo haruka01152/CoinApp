@@ -34,7 +34,7 @@
     </div>
     <div class="flex flex-col mt-8">
         <label for="number" class="text-lg text-gray-600 pb-3">【保有数】</label>
-        <input type="number" name="number" value="{{$coin->number}}">
+        <input type="number" name="number" value="{{floatval($coin->number)}}" step="0.001">
     </div>
 
     @foreach($errors->all() as $error)

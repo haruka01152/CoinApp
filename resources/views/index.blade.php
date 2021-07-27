@@ -54,7 +54,7 @@
       <td class="bg-gray-100 border border-black w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
       @endif
       <td class="bg-gray-100 border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->name}}</a></td>
-      <td class="bg-gray-100 border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->number}}</a></td>
+      <td class="bg-gray-100 border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{floatval($coin->number)}}</a></td>
       <td class="bg-gray-100 border border-black"><a class="td-link text-xs" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->updated_at}}</a></td>
     </tr>
     @else
@@ -65,7 +65,7 @@
       <td class="border border-black w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
       @endif
       <td class="border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->name}}</a></td>
-      <td class="border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->number}}</a></td>
+      <td class="border border-black"><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{floatval($coin->number)}}</a></td>
       <td class="border border-black"><a class="td-link text-xs" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->updated_at}}</a></td>
     </tr>
     @endif

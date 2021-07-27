@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Coin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class UpdateRequest extends FormRequest
 {
@@ -25,11 +26,10 @@ class UpdateRequest extends FormRequest
      */
     public function rules(Request $request)
     {
-        $coin = Coin::findOrFail($request->id);
-
         return [
             'icon' => 'image|max:1024|nullable',
-            'name' => 'required|min:1|max:10|unique:coins,name,' . $coin->id,
+            'name' => 'required|min:1|max:10',
+            'name' => [Rule::unique('coins', 'name')->where('user_id', Auth::id())->ignore($this->id)],
             'number' => 'required|numeric|min:1',
         ];
     }

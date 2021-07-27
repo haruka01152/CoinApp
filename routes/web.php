@@ -14,15 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function() {
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/', 'IndexController@index')->name('index');
 
     Route::get('add', 'IndexController@add')->name('add');
     Route::post('add', 'IndexController@create');
 
-    Route::get('edit/{id}', 'IndexController@edit')->name('edit');
-    Route::post('edit/{id}', 'IndexController@update');
+    Route::group(['middleware' => ['UserCheck']], function () {
+        Route::get('edit/{id}', 'IndexController@edit')->name('edit');
+        Route::post('edit/{id}', 'IndexController@update');
 
-    Route::get('delete/{id}', 'IndexController@delete')->name('delete');
-    Route::post('delete/{id}', 'IndexController@destroy');
+        Route::get('delete/{id}', 'IndexController@delete')->name('delete');
+        Route::post('delete/{id}', 'IndexController@destroy');
+    });
 });

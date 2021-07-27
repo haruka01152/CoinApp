@@ -7,6 +7,7 @@ use App\Models\Coin;
 use App\Http\Requests\CreateRequest;
 use App\Http\Requests\UpdateRequest;
 use FileStoreService;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller

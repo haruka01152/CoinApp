@@ -3,6 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class CreateRequest extends FormRequest
 {
@@ -25,7 +28,8 @@ class CreateRequest extends FormRequest
     {
         return [
             'icon' => 'image|max:1024|nullable',
-            'name' => 'required|min:1|max:10|unique:coins,name',
+            'name' => 'required|min:1|max:10',
+            'name' => [Rule::unique('coins', 'name')->where('user_id', Auth::id())],
             'number' => 'required|numeric|min:1',
         ];
     }

@@ -28,8 +28,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'icon' => 'image|max:1024|nullable',
-            'name' => 'required|min:1|max:10',
-            'name' => [Rule::unique('coins', 'name')->where('user_id', Auth::id())->ignore($this->id)],
+            'name' => ['required', 'min:1', 'max:10', Rule::unique('coins', 'name')->where('user_id', Auth::id())->ignore($this->id)],
             'number' => 'required|numeric|min:1',
         ];
     }

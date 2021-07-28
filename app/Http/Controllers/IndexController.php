@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Coin;
 use App\Http\Requests\CreateRequest;
+use App\Http\Requests\CreateVCRequest;
 use App\Http\Requests\UpdateRequest;
 use FileStoreService;
 use App\Models\User;
+use App\Models\Type;
 use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
@@ -42,6 +44,30 @@ class IndexController extends Controller
                 'user_id' => Auth::id(),
                 'name' => $request->name,
                 'number' => $request->number,
+            ]);
+        }
+
+        return redirect()->action('IndexController@index');
+    }
+
+    public function addVC()
+    {
+        return view('addVC');
+    }
+
+    public function createVC(CreateVCRequest $request)
+    {
+        if ($request->icon != null) {
+            // アップされた画像をファイルに保存
+            $image_path = FileStoreService::store($request);
+
+            Type::create([
+                'icon' => basename($image_path),
+                'name' => $request->name,
+            ]);
+        } else {
+            Type::create([
+                'name' => $request->name,
             ]);
         }
 

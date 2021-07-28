@@ -20,6 +20,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('add', 'IndexController@add')->name('add');
     Route::post('add', 'IndexController@create');
 
+    Route::get('addVC', 'IndexController@addVC')->name('add.VC');
+    Route::post('addVC', 'IndexController@createVC');
+
     Route::group(['middleware' => ['UserCheck']], function () {
         Route::get('edit/{id}', 'IndexController@edit')->name('edit');
         Route::post('edit/{id}', 'IndexController@update');

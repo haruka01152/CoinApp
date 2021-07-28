@@ -14,7 +14,7 @@
     height: 0;
   }
 
-  tr{
+  tr {
     border-top: .5px solid gray;
     border-bottom: .5px solid gray;
   }
@@ -33,7 +33,27 @@
 </style>
 
 <div class="py-8 pl-5 flex items-center justify-start">
-  <a href="{{route('add')}}"><i class="fas fa-plus-circle text-green-300 fa-3x"></i></a>
+  <x-jet-dropdown align="false" width="48">
+    <x-slot name="trigger">
+    <i class="fas fa-plus-circle text-green-300 fa-3x"></i>
+    </x-slot>
+
+    <x-slot name="content">
+      <div class="block px-4 py-2 text-xs text-gray-400">
+        追加
+      </div>
+
+      <x-jet-dropdown-link href="{{route('add')}}">
+        Owned List
+      </x-jet-dropdown-link>
+
+      <div class="border-t border-gray-100"></div>
+
+      <x-jet-dropdown-link href="{{ route('add.VC') }}">
+        Virtual Currency
+      </x-jet-dropdown-link>
+    </x-slot>
+  </x-jet-dropdown>
 </div>
 
 @if(count($coins) > 0)
@@ -64,9 +84,9 @@
       @else
       <td class=" w-little"><a class="td-link logo" href="{{route('edit', ['id' => $coin->id])}}"><i class="fab fa-viacoin text-green-300 fa-2x"></i></a></td>
       @endif
-      <td ><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->name}}</a></td>
-      <td ><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{floatval($coin->number)}}</a></td>
-      <td ><a class="td-link text-xs" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->updated_at}}</a></td>
+      <td><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->name}}</a></td>
+      <td><a class="td-link" href="{{route('edit', ['id' => $coin->id])}}">{{floatval($coin->number)}}</a></td>
+      <td><a class="td-link text-xs" href="{{route('edit', ['id' => $coin->id])}}">{{$coin->updated_at}}</a></td>
     </tr>
     @endif
     @endforeach

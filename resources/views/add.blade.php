@@ -19,7 +19,7 @@
                 <option value="{{$type->name}}" @if(old('name') == $type->name)selected @endif>{{$type->name}}</option>
             @endforeach
         </select>
-        <p class="text-xs text-gray-600 pt-1">※リストから選択した場合、アイコンは登録済みのものになります</p>
+        <p class="text-xs text-gray-600 pt-1">※名前をリストから選択しアイコンの選択がなかった場合、アイコンは登録済みのものになります</p>
         @endif
         <input type="text" name="nameinput" value="{{old('nameinput')}}"
         @if(count($types) > 0) placeholder="自由入力"@endif class="mt-5">

@@ -35,15 +35,14 @@ class IndexController extends Controller
             if ($request->nameinput) {
                 return redirect('add')->withErrors('名前の入力は、リストからの選択か自由入力どちらかにしてください。')->withInput();
             }
-    
+
             $name = $request->name;
-    
-        }else{
-    
-            if(!$request->nameinput){
+        } else {
+
+            if (!$request->nameinput) {
                 return redirect('add')->withErrors('名前は、必ず指定してください。')->withInput();
             }
-    
+
             $name = $request->nameinput;
         }
 
@@ -59,11 +58,25 @@ class IndexController extends Controller
                 'number' => $request->number,
             ]);
         } else {
-            Coin::create([
-                'user_id' => Auth::id(),
-                'name' => $name,
-                'number' => $request->number,
-            ]);
+            // アイコンがアップされていない　かつ　名前をリストから選択
+            if ($request->name) {
+                $type = Type::where('name', $request->name)->first();
+                Coin::create([
+                    'user_id' => Auth::id(),
+                    'icon' => $type->icon,
+                    'name' => $name,
+                    'number' => $request->number,
+                ]);
+
+            }else{
+                // アイコンがアップされていない　かつ　名前を自由入力
+                Coin::create([
+                    'user_id' => Auth::id(),
+                    'name' => $name,
+                    'number' => $request->number,
+                ]);
+    
+            }
         }
 
         return redirect()->action('IndexController@index');
@@ -71,8 +84,9 @@ class IndexController extends Controller
 
     public function edit(Request $request, $id)
     {
+        $types = Type::all();
         $coin = Coin::findOrFail($id);
-        return view('edit', compact('coin'));
+        return view('edit', compact('coin', 'types'));
     }
 
     public function update(UpdateRequest $request, $id)

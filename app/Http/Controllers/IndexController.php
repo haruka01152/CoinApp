@@ -19,7 +19,7 @@ class IndexController extends Controller
     {
         $coins = Coin::where('user_id', Auth::id())->sortable()->paginate(10);
         return view('index', compact('coins'));
-    } 
+    }
 
     public function add()
     {
@@ -29,9 +29,24 @@ class IndexController extends Controller
 
     public function create(CreateRequest $request)
     {
-        if($request->name && $request->nameinput){
-            return redirect('add')->withErrors('名前の入力は、リストからの選択か自由入力どちらかにしてください')->withInput();
+        // 名前のバリデーション
+        if ($request->name) {
+
+            if ($request->nameinput) {
+                return redirect('add')->withErrors('名前の入力は、リストからの選択か自由入力どちらかにしてください。')->withInput();
+            }
+    
+            $name = $request->name;
+    
+        }else{
+    
+            if(!$request->nameinput){
+                return redirect('add')->withErrors('名前は、必ず指定してください。')->withInput();
+            }
+    
+            $name = $request->nameinput;
         }
+
 
         if ($request->icon != null) {
             // アップされた画像をファイルに保存
@@ -40,13 +55,13 @@ class IndexController extends Controller
             Coin::create([
                 'user_id' => Auth::id(),
                 'icon' => basename($image_path),
-                'name' => $request->name,
+                'name' => $name,
                 'number' => $request->number,
             ]);
         } else {
             Coin::create([
                 'user_id' => Auth::id(),
-                'name' => $request->name,
+                'name' => $name,
                 'number' => $request->number,
             ]);
         }
@@ -64,12 +79,12 @@ class IndexController extends Controller
     {
         if ($request->icon != null) {
 
-            if($request->deleteIcon){
+            if ($request->deleteIcon) {
                 return redirect('edit/' . $id)->withErrors('アイコンの更新と削除を両方選択することはできません。')->withInput();
             }
 
             // 前の画像をファイルから削除
-            FileStoreService::delete($request);
+            FileStoreService::delete($request, $id);
 
             // 新しくアップされた画像をファイルに保存
             $image_path = FileStoreService::store($request);
@@ -86,7 +101,7 @@ class IndexController extends Controller
             if ($request->deleteIcon) {
 
                 // 画像をファイルから削除
-                FileStoreService::delete($request);
+                FileStoreService::delete($request, $id);
 
                 // DBのアイコンカラムをnullに更新
                 Coin::where('id', $id)->update([

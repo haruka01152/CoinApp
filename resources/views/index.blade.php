@@ -38,7 +38,7 @@
   <a href="{{route('add')}}" class="ml-10"><i class="fas fa-plus-circle text-green-300" style="font-size:35px;"></i></a>
 </div>
 
-<h2 class="text-lg text-gray-600 pl-5 pb-5"><i class="fas fa-wallet"></i>　Owned List</h2>
+<a href="{{route('index')}}" class="inline-block text-lg text-gray-600 ml-5 mb-4"><i class="fas fa-wallet"></i>　Owned List</a>
 
 @if(count($coins) > 0)
 <table class="table-fixed m-auto w-11/12">

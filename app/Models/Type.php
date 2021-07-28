@@ -12,7 +12,7 @@ class Type extends Model
     use HasFactory;
     use Sortable;
 
-    public $sortable = 'name';
+    public $sortable = ['name'];
 
     protected $fillable = [
         'icon',

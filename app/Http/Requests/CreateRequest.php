@@ -27,7 +27,8 @@ class CreateRequest extends FormRequest
     {
         return [
             'icon' => 'image|max:1024|nullable',
-            'name' => ['required', 'min:1', 'max:10', Rule::unique('coins', 'name')->where('user_id', Auth::id())],
+            'name' => ['nullable', 'min:1', 'max:10', Rule::unique('coins', 'name')->where('user_id', Auth::id())],
+            'nameinput' => ['nullable', 'min:1', 'max:10', Rule::unique('coins', 'name')->where('user_id', Auth::id())],
             'number' => 'required|numeric|min:1',
         ];
     }

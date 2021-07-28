@@ -14,12 +14,12 @@
         <label for="name" class="text-lg text-gray-600 pb-3">【名前】</label>
         @if(count($types) > 0)
         <select name="name" id="name">
-                <option value="0">登録済みの仮想通貨から選択</option>
+                <option value="">登録済みの仮想通貨から選択</option>
             @foreach($types as $type)
                 <option value="{{$type->name}}" @if(old('name') == $type->name)selected @endif>{{$type->name}}</option>
             @endforeach
         </select>
-        <p class="text-xs text-gray-600 pt-1">※アイコンは登録済みのものが自動的に保存されます</p>
+        <p class="text-xs text-gray-600 pt-1">※リストから選択した場合、アイコンは登録済みのものになります</p>
         @endif
         <input type="text" name="nameinput" value="{{old('nameinput')}}"
         @if(count($types) > 0) placeholder="自由入力"@endif class="mt-5">

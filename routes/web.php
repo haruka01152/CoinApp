@@ -15,13 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    // 保有リスト編集
     Route::get('/', 'IndexController@index')->name('index');
 
     Route::get('add', 'IndexController@add')->name('add');
     Route::post('add', 'IndexController@create');
-
-    Route::get('addVC', 'IndexController@addVC')->name('add.VC');
-    Route::post('addVC', 'IndexController@createVC');
 
     Route::group(['middleware' => ['UserCheck']], function () {
         Route::get('edit/{id}', 'IndexController@edit')->name('edit');
@@ -29,5 +27,19 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
         Route::get('delete/{id}', 'IndexController@delete')->name('delete');
         Route::post('delete/{id}', 'IndexController@destroy');
+    });
+
+    // 仮想通貨種類編集
+    Route::get('VC', 'VCController@VC')->name('VC');
+
+    Route::get('addVC', 'VCController@addVC')->name('add.VC');
+    Route::post('addVC', 'VCController@createVC');
+
+    Route::group(['middleware' => ['UserCheckVC']], function() {
+        Route::get('editVC/{id}', 'VCController@editVC')->name('edit.VC');
+        Route::post('editVC/{id}', 'VCController@updateVC');
+
+        Route::get('deleteVC/{id}', 'VCController@deleteVC')->name('delete.VC');
+        Route::post('deleteVC/{id}', 'VCController@destroyVC');
     });
 });

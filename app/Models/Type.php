@@ -17,5 +17,6 @@ class Type extends Model
     protected $fillable = [
         'icon',
         'name',
+        'user_id',
     ];
 }

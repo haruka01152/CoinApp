@@ -1501,6 +1501,9 @@ select {
 .ml-5{
 	margin-left: 1.25rem;
 }
+.ml-10{
+	margin-left: 2.5rem;
+}
 .bg-yellow-200{
 	--tw-bg-opacity: 1;
 background-color: rgba(253, 230, 138, var(--tw-bg-opacity));	

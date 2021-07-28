@@ -6,14 +6,23 @@
 
 <form action="" method="post" class="py-10 w-3/4 m-auto" enctype="multipart/form-data">
     @csrf
-    <h2 class="mb-6 p-2 rounded-full text-lg text-center" style="background-color:#dec02c; color:white;">保有リストに追加</h2>
         <div class="flex flex-col">
         <label for="icon" class="text-lg text-gray-600 pb-3">【アイコン】</label>
         <input type="file" name="icon">
     </div>
     <div class="flex flex-col mt-8">
         <label for="name" class="text-lg text-gray-600 pb-3">【名前】</label>
-        <input type="text" name="name" value="{{old('name')}}">
+        @if(count($types) > 0)
+        <select name="name" id="name">
+                <option value="0">登録済みの仮想通貨から選択</option>
+            @foreach($types as $type)
+                <option value="{{$type->name}}" @if(old('name') == $type->name)selected @endif>{{$type->name}}</option>
+            @endforeach
+        </select>
+        <p class="text-xs text-gray-600 pt-1">※アイコンは登録済みのものが自動的に保存されます</p>
+        @endif
+        <input type="text" name="nameinput" value="{{old('nameinput')}}"
+        @if(count($types) > 0) placeholder="自由入力"@endif class="mt-5">
     </div>
     <div class="flex flex-col mt-8">
         <label for="number" class="text-lg text-gray-600 pb-3">【保有数】</label>

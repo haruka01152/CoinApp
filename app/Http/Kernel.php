@@ -46,6 +46,10 @@ class Kernel extends HttpKernel
 
         'UserCheck' => [
             \App\Http\Middleware\UserCheck::class,
+        ],
+
+        'UserCheckVC' => [
+            \App\Http\Middleware\UserCheckVC::class,
         ]
     ];
 

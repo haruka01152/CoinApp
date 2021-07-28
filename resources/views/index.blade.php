@@ -33,28 +33,12 @@
 </style>
 
 <div class="py-8 pl-5 flex items-center justify-start">
-  <x-jet-dropdown align="false" width="48">
-    <x-slot name="trigger">
-    <i class="fas fa-plus-circle text-green-300 fa-3x"></i>
-    </x-slot>
+  <a href="{{route('VC')}}"><i class="fas fa-exchange-alt text-green-300 fa-2x"></i></a>
 
-    <x-slot name="content">
-      <div class="block px-4 py-2 text-xs text-gray-400">
-        追加
-      </div>
-
-      <x-jet-dropdown-link href="{{route('add')}}">
-        Owned List
-      </x-jet-dropdown-link>
-
-      <div class="border-t border-gray-100"></div>
-
-      <x-jet-dropdown-link href="{{ route('add.VC') }}">
-        Virtual Currency
-      </x-jet-dropdown-link>
-    </x-slot>
-  </x-jet-dropdown>
+  <a href="{{route('add')}}" class="ml-10"><i class="fas fa-plus-circle text-green-300" style="font-size:35px;"></i></a>
 </div>
+
+<h2 class="text-lg text-gray-600 pl-5 pb-5"><i class="fas fa-wallet"></i>　Owned List</h2>
 
 @if(count($coins) > 0)
 <table class="table-fixed m-auto w-11/12">

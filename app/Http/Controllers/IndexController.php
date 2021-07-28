@@ -17,57 +17,37 @@ class IndexController extends Controller
     //
     public function index()
     {
-        $user = Auth::user();
         $coins = Coin::where('user_id', Auth::id())->sortable()->paginate(10);
-        return view('index', compact('coins', 'user'));
-    }
+        return view('index', compact('coins'));
+    } 
 
     public function add()
     {
-        return view('add');
+        $types = Type::all();
+        return view('add', compact('types'));
     }
 
     public function create(CreateRequest $request)
     {
-        if ($request->icon != null) {
-            // アップされた画像をファイルに保存
-            $image_path = FileStoreService::store($request);
-
-            Coin::create([
-                'user_id' => Auth::id(),
-                'icon' => basename($image_path),
-                'name' => $request->name,
-                'number' => $request->number,
-            ]);
-        } else {
-            Coin::create([
-                'user_id' => Auth::id(),
-                'name' => $request->name,
-                'number' => $request->number,
-            ]);
+        if($request->name && $request->nameinput){
+            return redirect('add')->withErrors('名前の入力は、リストからの選択か自由入力どちらかにしてください')->withInput();
         }
 
-        return redirect()->action('IndexController@index');
-    }
-
-    public function addVC()
-    {
-        return view('addVC');
-    }
-
-    public function createVC(CreateVCRequest $request)
-    {
         if ($request->icon != null) {
             // アップされた画像をファイルに保存
             $image_path = FileStoreService::store($request);
 
-            Type::create([
+            Coin::create([
+                'user_id' => Auth::id(),
                 'icon' => basename($image_path),
                 'name' => $request->name,
+                'number' => $request->number,
             ]);
         } else {
-            Type::create([
+            Coin::create([
+                'user_id' => Auth::id(),
                 'name' => $request->name,
+                'number' => $request->number,
             ]);
         }
 

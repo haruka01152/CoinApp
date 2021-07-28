@@ -27,7 +27,7 @@ class CreateVCRequest extends FormRequest
     {
         return [
             'icon' => 'image|max:1024|nullable',
-            'name' => ['required', 'min:1', 'max:10', Rule::unique('types', 'name')->where('user_id', Auth::id())],
+            'name' => ['required', 'min:1', 'max:10', Rule::unique('types', 'name')],
         ];
     }
 }

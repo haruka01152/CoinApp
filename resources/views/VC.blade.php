@@ -35,7 +35,7 @@
 <div class="py-8 pl-5 flex items-center justify-start">
   <a href="{{route('index')}}"><i class="fas fa-exchange-alt text-green-300 fa-2x" style="transform: scaleX(-1);"></i></a>
 
-  <a href="{{route('add.VC')}}" class="ml-10"><i class="fas fa-plus-circle text-green-300" style="font-size:35px;"></i></a>
+  <a href="{{route('add.VC')}}" style="margin-left:2.5rem;"><i class="fas fa-plus-circle text-green-300" style="font-size:35px;"></i></a>
 </div>
 
 <a href="{{route('VC')}}" class="inline-block text-lg text-gray-600 ml-5 mb-4"><i class="fas fa-coins"></i>　Virtual Coin List</a>

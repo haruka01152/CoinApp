@@ -23,7 +23,7 @@ class IndexController extends Controller
 
     public function add()
     {
-        $types = Type::all();
+        $types = Type::where('user_id', Auth::id())->get();
         return view('add', compact('types'));
     }
 

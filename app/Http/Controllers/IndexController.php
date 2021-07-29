@@ -139,6 +139,7 @@ class IndexController extends Controller
 
     public function destroy(Request $request, $id)
     {
+        FileStoreService::delete($request, $id);
         Coin::where('id', $id)->delete();
         return redirect()->action('IndexController@index');
     }

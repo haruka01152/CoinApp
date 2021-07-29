@@ -100,6 +100,7 @@ class VCController extends Controller
 
     public function destroyVC(Request $request, $id)
     {
+        FileStoreService::deleteVCImage($request, $id);
         Type::where('id', $id)->delete();
         return redirect()->action('VCController@VC');
     }

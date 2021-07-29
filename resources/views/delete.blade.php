@@ -23,7 +23,7 @@
     </div>
     <div class="flex flex-col mt-8">
         <label for="number" class="text-lg text-gray-600 pb-3">【保有数】</label>
-        <input type="number" name="number" value="{{$coin->number}}" readonly>
+        <input type="number" name="number" value="{{floatval($coin->number)}}" readonly>
     </div>
 
     <div class="text-center">

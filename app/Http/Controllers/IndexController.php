@@ -60,10 +60,12 @@ class IndexController extends Controller
         } else {
             // アイコンがアップされていない　かつ　名前をリストから選択
             if ($request->name) {
-                $type = Type::where('name', $request->name)->first();
+                
+                $icon = FileStoreService::copyAndRename($request);
+
                 Coin::create([
                     'user_id' => Auth::id(),
-                    'icon' => $type->icon,
+                    'icon' => $icon,
                     'name' => $name,
                     'number' => $request->number,
                 ]);

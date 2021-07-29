@@ -18,6 +18,15 @@ class FileStoreService
         return $image_path;
     }
 
+    public function copyAndRename(Request $request)
+    {
+        // 画像をコピーして名前を変更（新しく保存）
+        $type = Type::where('name', $request->name)->first();
+        Storage::copy('public/images/' . $type->icon, 'public/images/Owned' . time() . $type->icon);
+        $icon = 'Owned' . time() . $type->icon;
+        return $icon;
+    }
+
     public function delete(Request $request, $id)
     {
         // 保有リストの画像をファイルから削除

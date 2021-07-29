@@ -17,7 +17,13 @@
 <body>
     <header class="bg-green-300 shadow-md">
         <div class="lg:container py-1 m-auto flex justify-between items-center">
-            <a href="{{route('index')}}" class="flex items-center pl-5 lg:pl-0 text-white text-3xl text-bold"><i class="fab fa-viacoin text-white" style="font-size:27px; margin-top:-2px;"></i><span>-ledger</span></a>
+            <a href="{{route('index')}}" class="flex items-center pl-5 lg:pl-0 text-white text-3xl text-bold">
+            @if(config('app.env') != 'local')
+            <i class="fab fa-viacoin text-white" style="font-size:27px; margin-top:-2px;"></i><span>-ledger</span>
+            @else
+            <h1>ローカルV-ledger</h1>
+            @endif
+            </a>
 
             <!-- Settings Dropdown -->
             <div class="mr-5 relative">
